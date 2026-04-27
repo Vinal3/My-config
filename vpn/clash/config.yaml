@@ -1,0 +1,38 @@
+mixed-port: 7890
+mode: rule
+log-level: info
+
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  auto-detect-interface: true
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+
+proxies:
+  - name: VPN
+    type: vless
+    server: pl.vpnxray.ru
+    port: 8443
+    uuid: 2a6b4441-5064-4743-816e-062ab6527706
+    network: tcp
+    tls: true
+    udp: true
+    servername: amazon.com
+    flow: xtls-rprx-vision
+    client-fingerprint: random
+    reality-opts:
+      public-key: VhxjOGsDOOTX3V9XdKSe7PpJQlYvAyE-FNHtUpOgmkQ
+      short-id: 862aac9e
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - VPN
+
+rules:
+  - MATCH,Proxy

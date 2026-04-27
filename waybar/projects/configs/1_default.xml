@@ -1,0 +1,149 @@
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <name>win10</name>
+  <uuid>c1d71ff6-448f-4807-a4bb-b75647617255</uuid>
+  <memory unit="KiB">8192000</memory>
+  <currentMemory unit="KiB">8192000</currentMemory>
+  <vcpu placement="static">4</vcpu>
+  <sysinfo type="smbios">
+    <bios>
+      <entry name="vendor">American Megatrends Inc.</entry>
+      <entry name="version">P2.30</entry>
+      <entry name="date">04/19/2024</entry>
+    </bios>
+    <system>
+      <entry name="manufacturer">ASUSTeK COMPUTER INC.</entry>
+      <entry name="product">PRIME H61-PLUS</entry>
+      <entry name="version">Rev 1.xx</entry>
+      <entry name="serial">MT70211X4300456</entry>
+      <entry name="uuid">c1d71ff6-448f-4807-a4bb-b75647617255</entry>
+      <entry name="sku">Desktop</entry>
+      <entry name="family">Motherboard</entry>
+    </system>
+    <baseBoard>
+      <entry name="manufacturer">ASUSTeK COMPUTER INC.</entry>
+      <entry name="product">PRIME H61-PLUS</entry>
+      <entry name="version">Rev 1.xx</entry>
+      <entry name="serial">123456789012345</entry>
+      <entry name="asset">Asset Tag</entry>
+      <entry name="location">Part Component</entry>
+    </baseBoard>
+    <chassis>
+      <entry name="manufacturer">ASUSTeK COMPUTER INC.</entry>
+      <entry name="version">Rev 1.xx</entry>
+      <entry name="serial">MT70211X4300456</entry>
+      <entry name="asset">Asset Tag</entry>
+      <entry name="sku">Desktop</entry>
+    </chassis>
+    <memory_device>
+      <entry name="manufacturer">Kingston</entry>
+      <entry name="product">9905702-017.A00G</entry>
+      <entry name="serial">E0259C3D</entry>
+      <entry name="part">KHX1600C9D3/4GX</entry>
+      <entry name="speed">1600</entry>
+      <entry name="locator">DIMM 0</entry>
+      <entry name="bank_locator">BANK 0</entry>
+    </memory_device>
+    <memory_device>
+      <entry name="manufacturer">Kingston</entry>
+      <entry name="product">9905702-017.A00G</entry>
+      <entry name="serial">E0259C3F</entry>
+      <entry name="part">KHX1600C9D3/4GX</entry>
+      <entry name="speed">1600</entry>
+      <entry name="locator">DIMM 1</entry>
+      <entry name="bank_locator">BANK 1</entry>
+    </memory_device>
+  </sysinfo>
+  <os firmware="efi">
+    <type arch="x86_64" machine="q35">hvm</type>
+    <firmware>
+      <feature enabled="no" name="enrolled-keys"/>
+      <feature enabled="yes" name="secure-boot"/>
+    </firmware>
+    <loader readonly='yes' secure='yes' type='pflash' format='raw'>/run/libvirt/nix-ovmf/edk2-x86_64-secure-code.fd</loader>
+    <nvram template='/run/libvirt/nix-ovmf/edk2-i386-vars.fd' format='raw'>/var/lib/libvirt/qemu/nvram/win10_VARS.fd</nvram>
+    <smbios mode='sysinfo'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv mode="custom">  
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vpindex state="on"/>
+      <runtime state="on"/>
+      <synic state="on"/>
+      <stimer state="on"/>
+      <reset state="on"/>
+      <vendor_id state='on' value='GenuineIntel'/>
+      <frequencies state="on"/>
+      <tlbflush state="on"/>
+      <ipi state="on"/>
+      <evmcs state="on"/>
+      <avic state="on"/>
+    </hyperv>
+    <kvm>
+      <hidden state="on"/>
+      <hint-dedicated state="on"/>
+    </kvm>
+    <vmport state="off"/>
+    <smm state="on"/>
+  </features>
+  <cpu mode='host-passthrough' check='none' migratable='on'>
+    <topology sockets='1' dies='1' cores='4' threads='1'/>
+    <cache mode='passthrough'/>
+    <feature policy='disable' name='hypervisor'/>
+    <feature policy='require' name='invtsc'/>
+    <feature policy='require' name='topoext'/>
+    <numa>
+      <cell id='0' cpus='0-3' memory='8192000' unit='KiB'/> ### cpus='0-1'
+    </numa>
+  </cpu>
+  <clock offset="localtime">
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+    <timer name='hypervclock' present='yes'/>
+    <timer name='tsc' present='yes' mode='native'/>
+  </clock>
+  <devices>
+    <emulator>/run/libvirt/nix-emulators/qemu-system-x86_64</emulator>
+    <disk type="file" device="disk">
+      <driver name="qemu" type="qcow2" discard="unmap"/>
+      <source file="/var/lib/libvirt/images/win10.qcow2"/>
+      <target dev="sda" bus="sata"/>
+      <serial>102938475628333</serial>
+    </disk>
+    <interface type="network">
+      <mac address="00:1B:FC:8e:aa:61"/>
+      <source network="default"/>
+      <model type="e1000e"/> <address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
+    </interface>
+    
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <source>
+        <address domain='0x0000' bus='0x01' slot='00' function='0x0'/>
+      </source>
+      <rom file='/var/lib/libvirt/roms/patched_bios.rom'/>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x01" slot="0x00" function="0x1"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
+    </hostdev>
+    <memballoon model='none'/>
+    <controller type='usb' model='qemu-xhci' ports='15'/>
+  </devices >
+  <qemu:commandline>
+    <qemu:arg value="-object"/>
+    <qemu:arg value="input-linux,id=mouse1,evdev=/dev/input/by-id/usb-Razer_Razer_DeathAdder_Essential-event-mouse"/>
+    <qemu:arg value="-object"/>
+    <qemu:arg value="input-linux,id=kbd1,evdev=/dev/input/by-id/usb-SONiX_Draconic-event-kbd,grab_all=on,repeat=on"/>  
+    <qemu:arg value="-smbios"/>
+    <qemu:arg value="type=17,manufacturer=Kingston,serial=E0259C3D,part=KHX1600C9D3-4GX,speed=1600"/>  
+    <qemu:arg value="-smbios"/>
+    <qemu:arg value="type=17,manufacturer=Kingston,serial=E0259C3F,part=KHX1600C9D3-4GX,speed=1600"/>
+ </qemu:commandline>
+</domain>

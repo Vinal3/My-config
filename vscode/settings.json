@@ -1,0 +1,174 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": 1,
+
+  // pip install autopep8 и расширения autopep8, получаем авто форматировался по PEP 8
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+
+  // Убираем статус бар снизу
+  "workbench.statusBar.visible": false,
+
+  // Убираем подсветки от git
+  // "git.decorations.enabled": false,
+  // "scm.diffDecorations": "none",
+  "git.enabled": false,
+
+
+  // убираем подсказки и назначаем, на Ctrl + Shift + Space
+  "editor.parameterHints.enabled": false,
+  // "editor.parameterHints.visible": false,
+  
+  // Code Runner запускает код в терминале
+  "coderunner.runInTerminal": true,
+
+  // Убираем виджет справа для скролла и не только
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.minimap.enabled": false,
+  "editor.matchBrackets": "never",
+  "editor.occurrencesHighlight": "off",
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.stickyScroll.enabled": false,
+  "terminal.integrated.stickyScroll.enabled": false,
+
+  // Не открывать стартовое окно при запуске
+  "workbench.startupEditor": "none",
+  
+  // Настройка курсора
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.cursorBlinking": "solid", // D
+
+  // Отключает кнопку управления раскладкой интерфейса
+  "workbench.layoutControl.enabled": false, 
+
+  // Размер шрифта в редакторе и терминале
+  "editor.fontSize": 20,
+  "terminal.integrated.fontSize": 18,
+
+  // Расстояние между буквами
+  "editor.letterSpacing": 0.5,
+
+  // Задержка появления подсказки при наведении (в мс)
+  "editor.hover.delay": 1000,
+
+  // Отключает полосу отладки слева (breakpoints)
+  "editor.glyphMargin": false,
+
+  // Автоматически добавляет скобки при автодополнении функций Python
+  "python.analysis.completeFunctionParens": true,
+
+  // Выбор подсказки — последняя использованная
+  "editor.suggestSelection": "recentlyUsed",
+
+  // Улучшения скобок
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingDelete": "always",
+  "editor.autoClosingOvertype": "always",
+  "files.autoSaveDelay": 1000,
+
+  // Лучший шрифт
+  "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+
+  // Настройки цветов
+  "workbench.colorCustomizations": {
+    // --- ТВОИ настройки (оставляем) ---
+    "statusBar.border": "#206486",
+    "editorError.background": "#00000000",
+    "editorWarning.background": "#00000000",
+    "editorInfo.background": "#00000000",
+    "editorHint.background": "#00000000",
+    "editorError.foreground": "#ff6b6b88",
+    "editorWarning.foreground": "#ffd16688",
+    "editorInfo.foreground": "#4dabf788",
+    "editorHint.foreground": "#94d2bd88",
+    "panel.border": "#59ace2",
+
+    // --- ONE DARK UI ---
+    // Основной фон
+    "editor.background": "#282C34",
+    "editor.foreground": "#ABB2BF",
+
+    // Sidebar (левая панель)
+    "sideBar.background": "#21252B",
+    "sideBar.foreground": "#ABB2BF",
+    "sideBar.border": "#2C313A",
+
+    // Activity bar (иконки слева)
+    "activityBar.background": "#21252B",
+    "activityBar.foreground": "#ABB2BF",
+    "activityBar.border": "#2C313A",
+
+    // Вкладки
+    "tab.activeBackground": "#282C34",
+    "tab.inactiveBackground": "#21252B",
+    "tab.activeForeground": "#FFFFFF",
+    "tab.inactiveForeground": "#9DA5B4",
+    "tab.border": "#2C313A",
+
+    // Верхняя панель
+    "titleBar.activeBackground": "#21252B",
+    "titleBar.inactiveBackground": "#21252B",
+
+    // Нижняя панель (terminal, output)
+    "panel.background": "#21252B",
+
+    // Статус бар
+    "statusBar.background": "#21252B",
+    "statusBar.foreground": "#ABB2BF",
+
+    // Линия текущей строки
+    "editor.lineHighlightBackground": "#2C313A55",
+
+    // Выделение
+    "editor.selectionBackground": "#3E445155",
+
+    // Курсор
+    "editorCursor.foreground": "#528BFF"
+  },
+  "editor.tokenColorCustomizations": {
+      // Цвет переменных
+      "variables": "#F4F4E0",
+      "textMateRules": [
+        {
+          // Области, к которым применяется цвет
+          "scope": [
+            "source",
+            "variable",
+            "constant",
+            "variable.other.constant",
+            "punctuation.definition.constant",
+            "constant.other.symbol",
+            "constant.language.symbol",
+            "support.constant",
+            "support.variable.magic.python",
+            "variable.other.enummember"
+          ],
+          "settings": {
+            // Цвет текста
+            "foreground": "#F4F4E0"
+          }
+        }
+      ]
+  },
+
+  // Убирает подсказку в пустом редакторе
+  "workbench.editor.empty.hint": "hidden",
+
+  // Язык по умолчанию для новых файлов
+  "files.defaultLanguage": "r",
+
+
+
+  // Настройки excalidraw
+  "excalidraw.workspaceLibraryPath": ".", // D
+  "excalidraw.theme": "dark",
+  "editor.tabCompletion": "onlySnippets",
+  "emmet.triggerExpansionOnTab": true, // D
+  "editor.inlineSuggest.enabled": false,
+  "files.autoSave": "afterDelay",
+  "explorer.confirmPasteNative": false,
+  "workbench.colorTheme": "Bluloco Dark", // D
+}

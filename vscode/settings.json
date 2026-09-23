@@ -1,28 +1,42 @@
 {
-  "workbench.iconTheme": "material-icon-theme",
   "window.zoomLevel": 1,
 
   // pip install autopep8 и расширения autopep8, получаем авто форматировался по PEP 8
   "[python]": {
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.semanticHighlighting.enabled": false, // Чтобы сделать True и False синими
+    "editor.defaultFormatter": "ms-python.autopep8",
   },
 
+  // Убараем отступы от боковой понели к файлам (файл лежит в репо)
+  "vscode_custom_css.imports": [
+    "file:///C:/Users/Тхакур/Documents/courses/vscode-styles.css",
+  ],
+
+  // Включение Prettier
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Prettier - отключение показа кто недавно редоктировал строку
+  "gitlens.currentLine.enabled": false,
+
+  // Tab работает как 2 пробела
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+
   // Убираем статус бар снизу
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
 
-  // Убираем подсветки от git
-  // "git.decorations.enabled": false,
-  // "scm.diffDecorations": "none",
-  "git.enabled": false,
+  // Убираем перевод фокуса при нажатии alt
+  "window.customMenuBarAltFocus": false,
 
-
-  // убираем подсказки и назначаем, на Ctrl + Shift + Space
+  // убираем подсказки и назначаем на Ctrl + Shift + Space
   "editor.parameterHints.enabled": false,
   // "editor.parameterHints.visible": false,
-  
+
   // Code Runner запускает код в терминале
-  "coderunner.runInTerminal": true,
+  "code-runner.runInTerminal": true,
 
   // Убираем виджет справа для скролла и не только
   "editor.scrollbar.horizontal": "hidden",
@@ -36,23 +50,23 @@
 
   // Не открывать стартовое окно при запуске
   "workbench.startupEditor": "none",
-  
+
   // Настройка курсора
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.cursorBlinking": "solid", // D
 
   // Отключает кнопку управления раскладкой интерфейса
-  "workbench.layoutControl.enabled": false, 
+  "workbench.layoutControl.enabled": false,
 
   // Размер шрифта в редакторе и терминале
-  "editor.fontSize": 20,
+  "editor.fontSize": 21,
   "terminal.integrated.fontSize": 18,
 
   // Расстояние между буквами
   "editor.letterSpacing": 0.5,
 
   // Задержка появления подсказки при наведении (в мс)
-  "editor.hover.delay": 1000,
+  "editor.hover.delay": 800,
 
   // Отключает полосу отладки слева (breakpoints)
   "editor.glyphMargin": false,
@@ -74,7 +88,6 @@
 
   // Настройки цветов
   "workbench.colorCustomizations": {
-    // --- ТВОИ настройки (оставляем) ---
     "statusBar.border": "#206486",
     "editorError.background": "#00000000",
     "editorWarning.background": "#00000000",
@@ -126,32 +139,32 @@
     "editor.selectionBackground": "#3E445155",
 
     // Курсор
-    "editorCursor.foreground": "#528BFF"
+    "editorCursor.foreground": "#528BFF",
   },
   "editor.tokenColorCustomizations": {
-      // Цвет переменных
-      "variables": "#F4F4E0",
-      "textMateRules": [
-        {
-          // Области, к которым применяется цвет
-          "scope": [
-            "source",
-            "variable",
-            "constant",
-            "variable.other.constant",
-            "punctuation.definition.constant",
-            "constant.other.symbol",
-            "constant.language.symbol",
-            "support.constant",
-            "support.variable.magic.python",
-            "variable.other.enummember"
-          ],
-          "settings": {
-            // Цвет текста
-            "foreground": "#F4F4E0"
-          }
-        }
-      ]
+    // Цвет переменных
+    "variables": "#F4F4E0",
+    "textMateRules": [
+      {
+        // Области, к которым применяется цвет
+        "scope": [
+          "source",
+          "variable",
+          "constant",
+          "variable.other.constant",
+          "punctuation.definition.constant",
+          "constant.other.symbol",
+          "constant.language.symbol",
+          "support.constant",
+          "support.variable.magic.python",
+          "variable.other.enummember",
+        ],
+        "settings": {
+          // Цвет текста
+          "foreground": "#F4F4E0",
+        },
+      },
+    ],
   },
 
   // Убирает подсказку в пустом редакторе
@@ -160,15 +173,35 @@
   // Язык по умолчанию для новых файлов
   "files.defaultLanguage": "r",
 
-
-
-  // Настройки excalidraw
+  // Другие настройки
   "excalidraw.workspaceLibraryPath": ".", // D
   "excalidraw.theme": "dark",
   "editor.tabCompletion": "onlySnippets",
   "emmet.triggerExpansionOnTab": true, // D
   "editor.inlineSuggest.enabled": false,
-  "files.autoSave": "afterDelay",
   "explorer.confirmPasteNative": false,
-  "workbench.colorTheme": "Bluloco Dark", // D
+  "workbench.colorTheme": "Bluloco Dark",
+  "python.createEnvironment.trigger": "off",
+  "files.autoSave": "afterDelay",
+  "gitlens.views.scm.grouped.views": {
+    "commits": true,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true,
+    "contributors": true,
+    "fileHistory": false,
+    "repositories": true,
+    "searchAndCompare": false,
+    "launchpad": true,
+  },
+  "gitlens.views.drafts.avatars": false,
+  "gitlens.graph.details.location": "auto",
+  "gitlens.graph.layout": "editor",
+  "gitlens.graph.changesColumn.enabled": true,
+  "terminal.integrated.initialHint": false,
+  "prettier.semi": false,
+  "git.enableSmartCommit": true,
+  "workbench.iconTheme": "material-icon-theme",
 }

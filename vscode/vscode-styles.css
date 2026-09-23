@@ -1,0 +1,19 @@
+/* Полностью сдвигаем самый первый уровень элементов (корень) влево */
+.monaco-list-row[aria-level="1"] .monaco-tl-twistie,
+.monaco-list-row[aria-level="1"] .monaco-tl-contents {
+  padding-left: 0px !important;
+  margin-left: 0px !important;
+}
+
+/* Если нужно сдвинуть и иконку раскрытия */
+.monaco-list-row[aria-level="1"] .monaco-tl-twistie {
+  width: 12px !important;
+}
+
+/* ---- НАСТРОЙКА СТРЕЛОЧЕК (ИКОНОК РАСКРЫТИЯ ПАПОК) ---- */
+
+.monaco-list-row .monaco-tl-twistie {
+    /* Меняем цвет стрелочек по умолчанию (например, на серый) */
+    color: #858585 !important;
+    font-size: 12px !important;
+}
